@@ -11,11 +11,11 @@ card.addEventListener('click', () => {
 // Prevent closing when clicking buttons
 yesBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  response.textContent = "Yay! See you there, my love 💖";
+  response.textContent = "yehey split the bill? JOKE";
 });
 
 noBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  noBtn.textContent = "Are you sure?? 😢";
+  noBtn.textContent = "sige sino pala gusto mo kasama ha";
   noBtn.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 50 - 25}px)`;
 });
