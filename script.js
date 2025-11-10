@@ -8,13 +8,27 @@ card.addEventListener('click', () => {
   card.classList.toggle('open');
 });
 
-// Yes/No button messages
+// Yes button stays normal
 yesBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  response.textContent = "Yehey!! split the bill? JOKE";
+  response.textContent = "Yehey! split the bill? JOKE";
 });
 
+// No button moves randomly
+noBtn.addEventListener('mouseover', () => {
+  // Get random positions within the card
+  const cardWidth = card.offsetWidth - noBtn.offsetWidth;
+  const cardHeight = card.offsetHeight - noBtn.offsetHeight;
+  const randomX = Math.floor(Math.random() * cardWidth);
+  const randomY = Math.floor(Math.random() * cardHeight);
+
+  noBtn.style.position = "absolute";
+  noBtn.style.left = randomX + "px";
+  noBtn.style.top = randomY + "px";
+});
+
+// Optional: change text after first click
 noBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  response.textContent = "sige sino pala gusto mo kasama";
+  noBtn.textContent = "Sige, sino pala gusto mo kasama? 🤔";
 });
