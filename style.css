@@ -1,43 +1,65 @@
+/* -------- Body & Background -------- */
 body {
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background: linear-gradient(135deg, #1a1a2e, #162447); /* elegant navy gradient */
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Playfair Display', serif; /* elegant, classy font */
+  margin: 0;
 }
 
+/* -------- Card -------- */
 .card {
-  width: 300px;
-  height: 200px;
+  width: 500px;      /* bigger card width */
+  height: 350px;     /* bigger card height */
   perspective: 1000px;
   cursor: pointer;
   position: relative;
 }
 
+/* -------- Front & Inside of Card -------- */
 .front, .inside {
   width: 100%;
   height: 100%;
   position: absolute;
   backface-visibility: hidden;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  background: #fefefe;               /* white card */
+  border: 2px solid #162447;         /* dark navy border */
+  border-radius: 15px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
   text-align: center;
-  padding: 1rem;
+  padding: 2rem;
+  color: #162447;                     /* text color */
   transition: transform 1s;
-}
-
-.front {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+/* -------- Front -------- */
+.front h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* -------- Inside -------- */
 .inside {
   transform: rotateY(180deg);
 }
 
+.inside h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.inside p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+/* -------- Card Flip Animation -------- */
 .card.open .front {
   transform: rotateY(180deg);
 }
@@ -46,23 +68,27 @@ body {
   transform: rotateY(360deg);
 }
 
+/* -------- Buttons -------- */
 button {
-  background: #ff4d6d;
-  color: white;
+  background: #162447;     /* dark navy */
+  color: #fefefe;          /* white text */
   border: none;
-  padding: 10px 20px;
+  padding: 12px 25px;      /* bigger buttons */
   border-radius: 10px;
   cursor: pointer;
-  margin: 5px;
+  margin: 10px;
+  font-size: 1.1rem;
   transition: 0.3s;
 }
 
 button:hover {
-  background: #d6336c;
+  background: #0f1a33;     /* slightly darker on hover */
 }
 
+/* -------- Response Message -------- */
 #response {
   margin-top: 10px;
   font-weight: bold;
-  color: #e60073;
+  color: #d4af37;          /* subtle gold accent for fun */
+  font-size: 1.2rem;
 }
