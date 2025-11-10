@@ -1,51 +1,61 @@
-/* -------- Body & Background -------- */
+/* Body & Background */
 body {
   background: linear-gradient(135deg, #1a1a2e, #162447); /* elegant navy gradient */
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Playfair Display', serif; /* elegant, classy font */
+  font-family: 'Playfair Display', serif;
   margin: 0;
 }
 
-/* -------- Card -------- */
+/* Card Container */
 .card {
-  width: 500px;      /* bigger card width */
-  height: 350px;     /* bigger card height */
+  width: 500px;
+  height: 350px;
   perspective: 1000px;
   cursor: pointer;
   position: relative;
 }
 
-/* -------- Front & Inside of Card -------- */
+/* Front & Inside with decoration */
 .front, .inside {
-  width: 100%;
+  width: 50%;  /* half card width for folding effect */
   height: 100%;
   position: absolute;
   backface-visibility: hidden;
-  background: #fefefe;               /* white card */
-  border: 2px solid #162447;         /* dark navy border */
-  border-radius: 15px;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #fdf6e3, #fff8e7); /* cream gradient */
+  border: 3px solid #d4af37; /* gold border */
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
   text-align: center;
-  padding: 2rem;
-  color: #162447;                     /* text color */
-  transition: transform 1s;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: transform 1s;
+  color: #162447;
 }
 
-/* -------- Front -------- */
-.front h2 {
+/* Front */
+.front {
+  left: 0;
+}
+
+.front h1 {
   font-size: 2rem;
   margin: 0;
 }
 
-/* -------- Inside -------- */
+.front .click-text {
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: #162447;
+}
+
+/* Inside */
 .inside {
+  right: 0;
   transform: rotateY(180deg);
 }
 
@@ -59,21 +69,21 @@ body {
   line-height: 1.5;
 }
 
-/* -------- Card Flip Animation -------- */
+/* Flip Animation */
 .card.open .front {
-  transform: rotateY(180deg);
+  transform: rotateY(-180deg);
 }
 
 .card.open .inside {
-  transform: rotateY(360deg);
+  transform: rotateY(0deg);
 }
 
-/* -------- Buttons -------- */
+/* Buttons */
 button {
-  background: #162447;     /* dark navy */
-  color: #fefefe;          /* white text */
+  background: #162447;
+  color: #fefefe;
   border: none;
-  padding: 12px 25px;      /* bigger buttons */
+  padding: 12px 25px;
   border-radius: 10px;
   cursor: pointer;
   margin: 10px;
@@ -82,13 +92,13 @@ button {
 }
 
 button:hover {
-  background: #0f1a33;     /* slightly darker on hover */
+  background: #0f1a33;
 }
 
-/* -------- Response Message -------- */
+/* Response message */
 #response {
   margin-top: 10px;
   font-weight: bold;
-  color: #d4af37;          /* subtle gold accent for fun */
+  color: #d4af37;
   font-size: 1.2rem;
 }
