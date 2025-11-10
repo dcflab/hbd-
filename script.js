@@ -8,15 +8,14 @@ card.addEventListener('click', () => {
   card.classList.toggle('open');
 });
 
-// Yes button stays normal
+// Yes button
 yesBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  response.textContent = "Yehey! split the bill? JOKE";
+  response.textContent = "yay! split the bill? JOKE";
 });
 
-// No button moves randomly
+// No button moves when hovered
 noBtn.addEventListener('mouseover', () => {
-  // Get random positions within the card
   const cardWidth = card.offsetWidth - noBtn.offsetWidth;
   const cardHeight = card.offsetHeight - noBtn.offsetHeight;
   const randomX = Math.floor(Math.random() * cardWidth);
@@ -27,8 +26,9 @@ noBtn.addEventListener('mouseover', () => {
   noBtn.style.top = randomY + "px";
 });
 
-// Optional: change text after first click
+// No button click changes text AND shows response
 noBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  noBtn.textContent = "Sige, sino pala gusto mo kasama? 🤔";
+  noBtn.textContent = "sige sino pala gusto mo kasama!!!";
+  response.textContent = ">:(";
 });
