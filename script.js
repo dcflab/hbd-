@@ -1,5 +1,5 @@
 const card = document.getElementById('card');
-const yesBtn = document.getElementById('ofc my love');
+const yesBtn = document.getElementById('yes');
 const noBtn = document.getElementById('no');
 const response = document.getElementById('response');
 
