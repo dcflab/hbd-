@@ -1,28 +1,6 @@
-const card = document.getElementById('card');
-const yesBtn = document.getElementById('yes');
-const noBtn = document.getElementById('no');
-const response = document.getElementById('response');
-
-// Flip the card when clicked
-card.addEventListener('click', () => {
-  card.classList.toggle('open');
-});
-
-// Yes button
-yesBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  response.textContent = "yay! split the bill? JOKE";/* Fonts */
+/* Fonts */
 body {
   font-family: 'Poppins', sans-serif;
-}
-
-/* Headings */
-h1, h2 {
-  font-family: 'Dancing Script', cursive;
-}
-
-/* Page & Card */
-body {
   background: linear-gradient(135deg, #1a1a2e, #162447);
   height: 100vh;
   display: flex;
@@ -31,9 +9,16 @@ body {
   margin: 0;
 }
 
+/* Headings */
+h1, h2 {
+  font-family: 'Dancing Script', cursive;
+  color: #162447;
+}
+
+/* Card */
 .card {
-  width: 600px;
-  height: 350px;
+  width: 500px;
+  height: 300px;
   perspective: 1000px;
   cursor: pointer;
   position: relative;
@@ -41,66 +26,57 @@ body {
 
 /* Front & Inside */
 .front, .inside {
-  width: 50%;
+  width: 100%;
   height: 100%;
   position: absolute;
+  top: 0;
+  left: 0;
   backface-visibility: hidden;
-  background: linear-gradient(135deg, #fdf6e3, #fff8e7);
-  border: 3px solid #d4af37;
   border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-  text-align: center;
+  background: #fff8e7;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
   transition: transform 1s;
-  color: #162447;
-  padding: 1rem;
-  pointer-events: none; /* allow card click even with buttons */
+  pointer-events: none; /* allows card click even with buttons */
+  border: 3px solid #d4af37;
 }
 
-/* Allow buttons to be clickable */
+/* Buttons clickable */
 button {
   pointer-events: auto;
 }
 
-/* Front */
-.front {
-  left: 0;
-}
-
+/* Front content */
 .front h1 {
   font-size: 2.5rem;
   margin: 0;
 }
-
 .front .click-text {
   font-size: 1rem;
   margin-top: 1rem;
 }
 
-/* Inside */
+/* Inside content */
 .inside {
-  right: 0;
   transform: rotateY(180deg);
 }
-
 .inside h2 {
   font-size: 1.8rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
 }
-
 .inside p {
   font-size: 1.1rem;
   line-height: 1.5;
 }
 
-/* Flip Animation */
+/* Flip animation */
 .card.open .front {
-  transform: rotateY(-180deg);
+  transform: rotateY(180deg);
 }
-
 .card.open .inside {
   transform: rotateY(0deg);
 }
@@ -132,52 +108,4 @@ button:hover {
   font-weight: bold;
   color: #d4af37;
   font-size: 1.2rem;
-}
-
-
-  confetti({
-  particleCount: 150,
-  spread: 70,
-  origin: { y: 0.6 }
-});
-});
-
-// No button moves when hovered
-noBtn.addEventListener('mouseover', () => {
-  const cardWidth = card.offsetWidth - noBtn.offsetWidth;
-  const cardHeight = card.offsetHeight - noBtn.offsetHeight;
-  const randomX = Math.floor(Math.random() * cardWidth);
-  const randomY = Math.floor(Math.random() * cardHeight);
-
-  noBtn.style.position = "absolute";
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
-});
-
-// No button click changes text AND shows response
-noBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  noBtn.textContent = "sige sino pala gusto mo kasama!!!";
-  response.textContent = ">:(";
-});
-
-/* Buttons style */
-button {
-  background: #fff;              /* white button */
-  color: #162447;                /* dark text */
-  border: 2px solid #d4af37;    /* gold border */
-  padding: 10px 25px;
-  border-radius: 30px;           /* rounded edges */
-  cursor: pointer;
-  margin: 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  position: relative;            /* needed for moving No button */
-}
-
-button:hover {
-  background: #d4af37;           /* gold hover */
-  color: white;                  /* text turns white on hover */
-  transform: scale(1.05);        /* small grow effect */
 }
