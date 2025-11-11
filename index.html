@@ -5,55 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Card</title>
 
-  <style>
- const card = document.getElementById('card');
-const yesBtn = document.getElementById('yes');
-const noBtn = document.getElementById('no');
-const response = document.getElementById('response');
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
-// Flip the card when clicked
-card.addEventListener('click', () => {
-  card.classList.toggle('open');
-});
-
-// Yes button
-yesBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  response.textContent = "yay hehehe split the bill? JOKE";
-
-  // Confetti effect
-  confetti({
-    particleCount: 150,
-    spread: 70,
-    origin: { y: 0.6 }
-  });
-});
-
-// No button moves when hovered
-noBtn.addEventListener('mouseover', () => {
-  const cardWidth = card.offsetWidth - noBtn.offsetWidth;
-  const cardHeight = card.offsetHeight - noBtn.offsetHeight;
-  const randomX = Math.floor(Math.random() * cardWidth);
-  const randomY = Math.floor(Math.random() * cardHeight);
-
-  noBtn.style.position = "absolute";
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
-});
-
-// No button click changes text AND shows response
-noBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  noBtn.textContent = "sige sino pala gusto mo kasama!!!";
-  response.textContent = ">:(";
-});
-  <style>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="card" id="card">
     <!-- Front of the card -->
     <div class="front">
-      <h1>ur 20 soon!!!! </h1>
+      <h1>Ur 20 soon!!!! 🎉</h1>
       <p class="click-text">Click to open</p>
     </div>
 
@@ -76,48 +38,7 @@ noBtn.addEventListener('click', (e) => {
   <!-- Confetti Library -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <script>
-  const card = document.getElementById('card');
-const yesBtn = document.getElementById('yes');
-const noBtn = document.getElementById('no');
-const response = document.getElementById('response');
-
-// Flip the card when clicked
-card.addEventListener('click', () => {
-  card.classList.toggle('open');
-});
-
-// Yes button
-yesBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  response.textContent = "yay hehehe split the bill? JOKE";
-
-  // Confetti effect
-  confetti({
-    particleCount: 150,
-    spread: 70,
-    origin: { y: 0.6 }
-  });
-});
-
-// No button moves when hovered
-noBtn.addEventListener('mouseover', () => {
-  const cardWidth = card.offsetWidth - noBtn.offsetWidth;
-  const cardHeight = card.offsetHeight - noBtn.offsetHeight;
-  const randomX = Math.floor(Math.random() * cardWidth);
-  const randomY = Math.floor(Math.random() * cardHeight);
-
-  noBtn.style.position = "absolute";
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
-});
-
-// No button click changes text AND shows response
-noBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  noBtn.textContent = "sige sino pala gusto mo kasama!!!";
-  response.textContent = ">:(";
-});
-</script>
+  <!-- Script -->
+  <script src="script.js"></script>
 </body>
 </html>
