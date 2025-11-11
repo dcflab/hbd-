@@ -11,7 +11,7 @@ card.addEventListener('click', () => {
 // Yes button
 yesBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  response.textContent = "yay hehehe split the bill? JOKE";
+  response.textContent = "yay hehe split the bill? JOKE!";
 
   // Confetti effect
   confetti({
