@@ -1,111 +1,41 @@
-/* Body & Background */
-body {
-  background: linear-gradient(135deg, #1a1a2e, #162447); /* elegant navy gradient */
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Playfair Display', serif;
-  margin: 0;
-}
+const card = document.getElementById('card');
+const yesBtn = document.getElementById('yes');
+const noBtn = document.getElementById('no');
+const response = document.getElementById('response');
 
-/* Card Container */
-.card {
-  width: 600px;
-  height: 350px;
-  perspective: 1000px;
-  cursor: pointer;
-  position: relative;
-}
+// Flip the card when clicked
+card.addEventListener('click', () => {
+  card.classList.toggle('open');
+});
 
-/* Front & Inside with decoration */
-.front, .inside {
-  width: 50%;  /* half card width for folding effect */
-  height: 100%;
-  position: absolute;
-  backface-visibility: hidden;
-  background: linear-gradient(135deg, #fdf6e3, #fff8e7); /* cream gradient */
-  border: 3px solid #d4af37; /* gold border */
-  border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: transform 1s;
-  color: #162447;
-}
+// Yes button
+yesBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  response.textContent = "yay! split the bill? JOKE";
 
-/* Front */
-.front {
-  left: 0;
-}
+  // Confetti effect
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+});
 
-.front h1 {
-  font-size: 2rem;
-  margin: 0;
-}
+// No button moves when hovered
+noBtn.addEventListener('mouseover', () => {
+  const cardWidth = card.offsetWidth - noBtn.offsetWidth;
+  const cardHeight = card.offsetHeight - noBtn.offsetHeight;
+  const randomX = Math.floor(Math.random() * cardWidth);
+  const randomY = Math.floor(Math.random() * cardHeight);
 
-.front .click-text {
-  font-size: 1rem;
-  margin-top: 1rem;
-  color: #162447;
-}
+  noBtn.style.position = "absolute";
+  noBtn.style.left = randomX + "px";
+  noBtn.style.top = randomY + "px";
+});
 
-/* Inside */
-.inside {
-  right: 0;
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;        /* add padding for space */
-  text-align: center;   /* center the text */
-  word-wrap: break-word; /* wrap long text */
-}
-
-.inside h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.inside p {
-  font-size: 1rem;
-  line-height: 1.3;
-}
-
-/* Flip Animation */
-.card.open .front {
-  transform: rotateY(-180deg);
-}
-
-.card.open .inside {
-  transform: rotateY(0deg);
-}
-
-/* Buttons */
-button {
-  background: #162447;
-  color: #fefefe;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin: 10px;
-  font-size: 1.1rem;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #0f1a33;
-}
-
-/* Response message */
-#response {
-  margin-top: 10px;
-  font-weight: bold;
-  color: #d4af37;
-  font-size: 1.2rem;
-}
+// No button click changes text AND shows response
+noBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  noBtn.textContent = "sige sino pala gusto mo kasama!!!";
+  response.textContent = ">:(";
+});
